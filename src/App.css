@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+
+.hidden {
+  display: none;
+}
+
+#countDownDiv {
+  border: 1px solid black;
+  transition: .6s;
+}
+
+#expandButton {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+}
