@@ -111,8 +111,8 @@ function App() {
 
   function startTimer() {
 
-    if (bigBlinds.length === parseInt(rounds) && smallBlinds.length === parseInt(rounds) && roundTimesMS.length === parseInt(rounds)) {
-      setPaused(!paused);
+    if (checkArrays()) {
+      pausePlay();
       setRoundTimeRemaining(roundTimesMS[currentRound - 1]);
       const button = document.getElementById('startButton');
       button.classList.add('hidden');
@@ -163,8 +163,14 @@ function App() {
     }
   }
 
+  function checkArrays(){
+    if (bigBlinds.length === parseInt(rounds) && smallBlinds.length === parseInt(rounds) && roundTimesMS.length === parseInt(rounds) && bigBlinds.includes('') === false && smallBlinds.includes('') === false && roundTimesMS.includes(0)=== false) {
+      return true
+    }
+  }
+
   function pausePlay() {
-    if (bigBlinds.length === parseInt(rounds) && smallBlinds.length === parseInt(rounds) && roundTimesMS.length === parseInt(rounds)) {
+    if (checkArrays()) {
       setPaused(!paused);
     } else {
       window.alert("Looks like you have a gap in your table, please ensure all rounds have a Time and both Blinds filled out")
