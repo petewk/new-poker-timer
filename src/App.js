@@ -16,7 +16,6 @@ function App() {
   const [currentRound, setCurrentRound] = useState(1);
   const [roundTimeRemaining, setRoundTimeRemaining] = useState(0);
   const [paused, setPaused] = useState(true);
-  const [testNum, setTestNum] = useState(1);
   const [expanded, setExpanded] = useState(false);
   const [windowed, setWindowed] = useState(false);
 
