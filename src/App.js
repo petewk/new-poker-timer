@@ -42,6 +42,9 @@ function App() {
     if (rounds > 1) {
       target.value--;
       setRounds(target.value)
+      bigBlinds.splice(-1);
+      smallBlinds.splice(-1);
+      roundTimesMS.splice(-1);
     }
   }
 
@@ -178,12 +181,14 @@ function App() {
   }
 
   function skipNextRound(){
-    if(!paused){
-      pausePlay()
+    if(currentRound < rounds) {
+      if(!paused){
+        pausePlay()
+      }
+      setCurrentRound(currentRound + 1);
+      setRoundTimeRemaining(roundTimesMS[currentRound]);
+      moveArrow();
     }
-    setCurrentRound(currentRound + 1);
-    setRoundTimeRemaining(roundTimesMS[currentRound]);
-    moveArrow();
   }
 
 
