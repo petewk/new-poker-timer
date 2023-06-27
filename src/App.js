@@ -131,6 +131,7 @@ function App() {
 
   function expand() {
     const card = document.getElementById('countDownDiv');
+    // document.getElementById('mainTitle').classList.toggle('hidden');
 
 
     if(paused && expanded || paused && !expanded && !windowed){
@@ -181,13 +182,17 @@ function App() {
   }
 
   function skipNextRound(){
-    if(currentRound < rounds) {
-      if(!paused){
-        pausePlay()
+    if(checkArrays()){
+      if(currentRound < rounds) {
+        if(!paused){
+          pausePlay()
+        }
+        setCurrentRound(currentRound + 1);
+        setRoundTimeRemaining(roundTimesMS[currentRound]);
+        moveArrow();
       }
-      setCurrentRound(currentRound + 1);
-      setRoundTimeRemaining(roundTimesMS[currentRound]);
-      moveArrow();
+    }else {
+      window.alert("Looks like you have a gap in your table, please ensure all rounds have a Time and both Blinds filled out")
     }
   }
 
@@ -204,7 +209,7 @@ function App() {
   return (
     <div className="App">
       <div id="container">
-        <h1>Poker Timer</h1>
+        <h1 id="mainTitle">Poker Timer</h1>
 
         {/* Section for setting the rounds in the game */}
 
@@ -297,6 +302,34 @@ function App() {
 
             <div id="countDownInner">
 
+              
+              <span id="countdownTimerContainer">
+                <div><h5 id="roundTitle">Current Round:</h5><h5> {currentRound} of {rounds}</h5></div>
+                  {
+                    roundTimeRemaining < 3600000
+                      ? roundTimeRemaining < 60000
+                        ? <><h5>Blinds increase in: </h5> <h5><span className='timerNums'>{(roundTimeRemaining / 1000).toString().padStart(2, '0')}</span> s</h5></>
+                        : <><h5>Blinds increase in: </h5> <h5><span  className='timerNums'>{Math.floor(roundTimeRemaining / 60000)}:{((roundTimeRemaining % 60000) / 1000).toString().padStart(2, '0')}</span></h5></>
+      
+      
+                      : <h5>Time until increase is {Math.floor(roundTimeRemaining / 3600000)} hours and {(roundTimeRemaining % 3600000) / 60000} minutes</h5>
+                  }
+                  
+      
+                  
+                  <h6>
+                    <span className="blindLabels">Small blind: <i className="blindNum">{smallBlinds[currentRound - 1]}</i></span>  
+                    <span className="blindLabels">Big blind: <i className="blindNum">{bigBlinds[currentRound - 1]}</i> </span>
+                  </h6>
+                  {
+                    paused
+                      ? <button className='pausePlay' onClick={pausePlay} style={{color: 'green'}}><FontAwesomeIcon icon={faPlay} /></button>
+                      : <button className='pausePlay' onClick={pausePlay} style={{color: 'red'}}><FontAwesomeIcon icon={faPause} /></button>
+                  }
+      
+                  <button className='pausePlay' onClick={skipNextRound}><FontAwesomeIcon icon={faForward} /></button>
+              </span>
+
               <span id="countdownTableContainer" >
                 <table id="roundsTableDisplay">
                   <thead>
@@ -335,33 +368,6 @@ function App() {
                   }
                   </tbody>
                 </table>
-              </span>
-
-              <span id="countdownTimerContainer">
-                <div><h5 id="roundTitle">Current Round:</h5><h5> {currentRound} of {rounds}</h5></div>
-                  {
-                    roundTimeRemaining < 3600000
-                      ? roundTimeRemaining < 60000
-                        ? <><h5>Blinds increase in: </h5> <h5><span className='timerNums'>{(roundTimeRemaining / 1000).toString().padStart(2, '0')}</span> s</h5></>
-                        : <><h5>Blinds increase in: </h5> <h5 className='timerNums'>{Math.floor(roundTimeRemaining / 60000)}:{((roundTimeRemaining % 60000) / 1000).toString().padStart(2, '0')}</h5></>
-      
-      
-                      : <h5>Time until increase is {Math.floor(roundTimeRemaining / 3600000)} hours and {(roundTimeRemaining % 3600000) / 60000} minutes</h5>
-                  }
-                  
-      
-                  
-                  <h6>
-                    <span className="blindLabels">Small blind: <i className="blindNum">{smallBlinds[currentRound - 1]}</i></span>  
-                    <span className="blindLabels">Big blind: <i className="blindNum">{bigBlinds[currentRound - 1]}</i> </span>
-                  </h6>
-                  {
-                    paused
-                      ? <button className='pausePlay' onClick={pausePlay} style={{color: 'green'}}><FontAwesomeIcon icon={faPlay} /></button>
-                      : <button className='pausePlay' onClick={pausePlay} style={{color: 'red'}}><FontAwesomeIcon icon={faPause} /></button>
-                  }
-      
-                  <button className='pausePlay' onClick={skipNextRound}><FontAwesomeIcon icon={faForward} /></button>
               </span>
 
             </div>

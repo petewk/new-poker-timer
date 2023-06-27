@@ -80,9 +80,9 @@
   height: 100vh !important;
 }
 
-.windowed {
+#countDownDiv.windowed {
   height: 25vh !important;
-  width: 20vw !important;
+  width: 20vw;
   border: 1px solid gold;
   border-radius: 20px;
   box-shadow: 5px 7px 13px black;
@@ -99,7 +99,8 @@
   font-size: 2em;
   font-family: 'Card';
   color:red;
-  margin: 20px auto;
+  margin: 5px auto;
+  
 }
 
 #countDownDiv {
@@ -299,5 +300,36 @@ thead tr th {
 @media only screen and (max-width: 600px) {
   .roundNum {
     display:block;
+  }
+
+  #countDownInner {
+    overflow-y: auto;
+  }
+
+  #countdownTableContainer {
+    display: block;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  #roundsTableDisplay {
+    margin-top: 50px;
+  }
+
+  #countdownTimerContainer {
+    display: block;
+    width: 100%;
+  }
+
+  .blindLabels {
+    display: block;
+  }
+
+  #countDownDiv.windowed {
+    width: 94%;
+    margin: 5px auto;
+    right: auto;
+    left: auto;
+    height: 20vh !important
   }
 }
