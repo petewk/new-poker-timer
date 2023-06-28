@@ -150,19 +150,30 @@ function App() {
 
   function countDown() {
     if (paused === false) {
-      if (roundTimeRemaining === 0) {
+      if (roundTimeRemaining <= 0) {
         if (currentRound === parseInt(rounds)) {
+          pausePlay();
           window.alert("game is over")
         } else {
           pausePlay();
           setCurrentRound(currentRound + 1);
           setRoundTimeRemaining(roundTimesMS[currentRound - 1]);
           let audio = new Audio(sound);
-          audio.play();
+          audio.load();
+          try {
+            audio.play()
+          } catch (error) {
+            console.log(error)
+          };
           moveArrow();
         }
       } else {
-        setRoundTimeRemaining(roundTimeRemaining - 1000)
+        if (roundTimeRemaining >= 1000) {
+          setRoundTimeRemaining(roundTimeRemaining - 1000)
+        } else {
+          setRoundTimeRemaining(0)
+        }
+
       }
     }
   }
@@ -312,7 +323,7 @@ function App() {
                         : <><h5>Blinds increase in: </h5> <h5><span  className='timerNums'>{Math.floor(roundTimeRemaining / 60000)}:{((roundTimeRemaining % 60000) / 1000).toString().padStart(2, '0')}</span></h5></>
       
       
-                      : <h5>Time until increase is {Math.floor(roundTimeRemaining / 3600000)} hours and {(roundTimeRemaining % 3600000) / 60000} minutes</h5>
+                      : <h5>Time until increase is {Math.floor(roundTimeRemaining / 3600000)} hours and {Math.floor((roundTimeRemaining % 3600000) / 60000)} minutes, {(roundTimeRemaining % 60000) / 1000} seconds</h5>
                   }
                   
       
