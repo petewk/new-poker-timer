@@ -158,9 +158,9 @@ function App() {
           pausePlay();
           setCurrentRound(currentRound + 1);
           setRoundTimeRemaining(roundTimesMS[currentRound - 1]);
-          let audio = new Audio(sound);
-          audio.load();
           try {
+            let audio = new Audio(sound);
+            audio.load();
             audio.play()
           } catch (error) {
             console.log(error)
