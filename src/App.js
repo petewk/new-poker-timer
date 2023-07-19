@@ -266,7 +266,7 @@ function App() {
 
         </div>
         <br></br>
-        <button id="startButton" onClick={startTimer}>Begin</button>
+        <button id="startButton" onClick={startTimer}>PLAY!</button>
 
         {/* Section for showing the countdown and pause/play buttons */}
         <button id="expandButton" onClick={expand}>

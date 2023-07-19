@@ -8,6 +8,21 @@
 }
 
 
+::-webkit-scrollbar{
+  background: #ffffff00;
+  height: 50%;
+  margin: 50px 10px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #b23d3df2;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track{
+  margin: 40px 0px;
+}
+
 .App {
   text-align: center;
   height: 100vh;
@@ -38,6 +53,14 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+#startButton {
+  margin-bottom: 20px;
+  width: 100px;
+  height: 40px;
+  border-radius: 7px;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -130,6 +153,8 @@
   width: 40%;
   display: inline-block;
   float: left;
+  max-height: 85%;
+  overflow-y: auto;
 }
 
 #countdownTimerContainer {
@@ -210,6 +235,7 @@ thead tr th {
 #inputRowsDiv {
   width:fit-content;
   margin: 0 auto;
+  text-align: right;
 }
 
 #inputRowsDiv div {
@@ -298,6 +324,9 @@ thead tr th {
 
 
 @media only screen and (max-width: 600px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
   .roundNum {
     display:block;
   }
