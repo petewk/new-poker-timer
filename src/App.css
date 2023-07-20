@@ -46,6 +46,15 @@
   overflow-x: hidden;
 }
 
+#mainTitle {
+  border: 2px solid gold;
+    border-radius: 10px;
+    width: 20%;
+    margin: 5vh auto;
+    padding: 18px;
+    min-width: min-content;
+}
+
 .App h1 {
   margin-top: 50px;
 }
@@ -60,7 +69,17 @@
   width: 100px;
   height: 40px;
   border-radius: 7px;
+  border: none;
+  box-shadow: 2px 2px 2px black;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #08844e;
 
+}
+
+#startButton:active {
+  color: red;
+    box-shadow: inset 2px 3px 7px 0px black;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -329,6 +348,11 @@ thead tr th {
   }
   .roundNum {
     display:block;
+    text-align: center;
+  }
+
+  #inputRowsDiv {
+    text-align: center;
   }
 
   #countDownInner {
