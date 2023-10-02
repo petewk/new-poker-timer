@@ -9,18 +9,20 @@
 
 
 ::-webkit-scrollbar{
-  background: #ffffff00;
   height: 50%;
   margin: 50px 10px;
+  width: 12px;
+  position: absolute;
 }
 
 ::-webkit-scrollbar-thumb{
   background: #b23d3df2;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
 ::-webkit-scrollbar-track{
-  margin: 40px 0px;
+  margin: 100px 0px;
+  color: black;
 }
 
 .App {
@@ -31,6 +33,7 @@
   box-sizing: border-box;
   position: absolute;
   padding-top: 2%;
+  box-shadow: 9px 8px 20px 0px inset;
 }
 
 
@@ -51,7 +54,7 @@
     border-radius: 10px;
     width: 20%;
     margin: 5vh auto;
-    padding: 18px;
+    padding: 18px 50px;
     min-width: min-content;
 }
 
@@ -120,14 +123,17 @@
 .expanded {
   width: 100vw !important;
   height: 100vh !important;
+  opacity: 1 !important;
 }
 
 #countDownDiv.windowed {
   height: 25vh !important;
   width: 20vw;
   border: 1px solid gold;
-  border-radius: 20px;
+  border-radius: 45px;
   box-shadow: 5px 7px 13px black;
+  opacity: 1;
+  margin: 20px;
 }
 
 .blindNumWindowed {
@@ -141,7 +147,7 @@
   font-size: 2em;
   font-family: 'Card';
   color:red;
-  margin: 5px auto;
+  margin: 10px auto;
   
 }
 
@@ -157,6 +163,9 @@
     overflow: hidden;
     background-color: var(--table-green);
     padding-top: 2%;
+    min-width: 175px;
+    opacity: 0;
+
 }
 
 #countDownInner {
@@ -166,6 +175,8 @@
   border-radius: 45px;
   margin-top: 1vh;
   margin: 0 auto;
+  display: flex;
+    flex-wrap: wrap;
 }
 
 #countdownTableContainer {
@@ -179,7 +190,7 @@
 #countdownTimerContainer {
   width: 60%;
     display: inline-block;
-    float: right;
+    float: left;
     height: 100%;
 }
 
@@ -191,6 +202,7 @@
   width: 80%;
   max-height: 80%;
   overflow-y: auto;
+  padding: 5px;
   
 }
 
@@ -213,7 +225,7 @@ thead tr th {
   content: '-->';
   position: absolute;
   font-weight: bold;
-  left: 4vw;
+  right: 38%;
 }
 
 #expandButton {
@@ -230,25 +242,34 @@ thead tr th {
   height: 30px;
   width: 45px;
   border-width: 1px;
+  margin: 0px 10px;
+  border-radius: 6px;
+  background-color: white;
+  font-size: large;
 }
 
 #numRounds {
+  padding: 0px;
   text-align: center;
   width: 40px;
   height: 30px;
   box-sizing: border-box;
   border-width: 1px;
-
+  font-weight: bold;
+  font-size: large;
+  border: none;
+  border-radius: 3px;
 }
 
 .adjustRight {
-  border-radius: 0px 10px 10px 0px;
-  color: red;
+  border: 2px solid black;
+    color: black;
+
 }
 
 .adjustLeft {
-  border-radius: 10px 0 0 10px;
-  color: black;
+  border: 2px solid red;
+  color: red;
 }
 
 #inputRowsDiv {
@@ -282,10 +303,18 @@ thead tr th {
 
 #roundTitle {
   margin-top: 14vh;
+  font-size: 1em;
+}
+
+#roundCounter {
+  font-size: 3em;
+}
+
+h5 {
+  font-size: 1em;
 }
 
 #roundTitle + h5 {
-  font-size: 2.4em;
   font-weight: bold;
   font-family: 'Card';
   color: red;
@@ -302,7 +331,7 @@ thead tr th {
 .timerNums {
   font-family: 'Card';
   color: red;
-  font-size: 4.5em;
+  font-size: 3em;
   margin: 20px 0 50px 0;
   -webkit-text-stroke: 1px black;
 }
@@ -321,16 +350,24 @@ thead tr th {
 }
 
 .blindLabels {
-
+  font-size: 2em;
 }
 
 .blindNum {
-  font-size: 5.5rem;
+  font-size: 3.5rem;
   padding: 0px 50px 0px 10px;
   font-style: normal;
   font-family: 'Card';
   color: red;
   -webkit-text-stroke: 1px black;
+}
+
+
+#timesecs {
+  color: black;
+  font-size: 1rem;
+  text-decoration: none;
+  font-style: none;
 }
 
 @media only screen and (min-width: 600px) {
@@ -367,6 +404,7 @@ thead tr th {
 
   #roundsTableDisplay {
     margin-top: 50px;
+
   }
 
   #countdownTimerContainer {
@@ -380,9 +418,10 @@ thead tr th {
 
   #countDownDiv.windowed {
     width: 94%;
-    margin: 5px auto;
+    margin: 8px auto;
     right: auto;
     left: auto;
-    height: 20vh !important
+    height: 22vh !important;
+    opacity: 1;
   }
 }

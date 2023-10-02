@@ -288,11 +288,11 @@ function App() {
               {
                 roundTimeRemaining < 3600000
                   ? roundTimeRemaining < 60000
-                    ? <><h5 ><span className='timerNumsWindowed'>{(roundTimeRemaining / 1000).toString().padStart(2, '0')}</span> s</h5></>
+                    ? <><h5 className='timerNumsWindowed'>{(roundTimeRemaining / 1000).toString().padStart(2, '0')} <i id="timesecs">s</i></h5></>
                     : <><h5 className='timerNumsWindowed'>{Math.floor(roundTimeRemaining / 60000)} : {((roundTimeRemaining % 60000) / 1000).toString().padStart(2, '0')}</h5></>
   
   
-                  : <h5>Time until increase is {Math.floor(roundTimeRemaining / 3600000)} hours and {(roundTimeRemaining % 3600000) / 60000} minutes</h5>
+                  : <h5 className='timerNumsWindowed'>Time until increase is {Math.floor(roundTimeRemaining / 3600000)} hours and {(roundTimeRemaining % 3600000) / 60000} minutes</h5>
               }
             </div>
             <div>
@@ -315,7 +315,7 @@ function App() {
 
               
               <span id="countdownTimerContainer">
-                <div><h5 id="roundTitle">Current Round:</h5><h5> {currentRound} of {rounds}</h5></div>
+                <div><h5 id="roundTitle">Current Round:</h5><h5 id="roundCounter"> {currentRound} of {rounds}</h5></div>
                   {
                     roundTimeRemaining < 3600000
                       ? roundTimeRemaining < 60000
