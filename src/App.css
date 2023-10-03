@@ -134,6 +134,7 @@
   box-shadow: 5px 7px 13px black;
   opacity: 1;
   margin: 20px;
+  min-height:190px;
 }
 
 .blindNumWindowed {
@@ -410,6 +411,16 @@ h5 {
   #countdownTimerContainer {
     display: block;
     width: 100%;
+    height: auto;
+  }
+
+  #roundTitle {
+    margin-top: 6vh;
+  }
+
+  .active::after {
+    right: auto;
+    left: 10%;
   }
 
   .blindLabels {
@@ -423,5 +434,6 @@ h5 {
     left: auto;
     height: 22vh !important;
     opacity: 1;
+    min-height: 190px;
   }
 }
